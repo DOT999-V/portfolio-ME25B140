@@ -16,15 +16,15 @@
         }
 
         .container {
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            background: rgba(255, 255, 255, 0.18);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
         
             background-image: linear-gradient(135deg,
-                rgba(255,255,255,0.25) 0%,
-                rgba(230,230,230,0.20) 35%,
-                rgba(200,200,200,0.18) 70%,
-                rgba(150,150,150,0.15) 100%
+                rgba(255,255,255,0.40) 0%,
+                rgba(220,220,220,0.30) 35%,
+                rgba(180,180,180,0.25) 70%,
+                rgba(140,140,140,0.20) 100%
             );
         
             padding: 25px;
@@ -33,6 +33,26 @@
             outline: 3px solid rgba(255,255,255,0.6);
             box-shadow: 0 0 30px rgba(0,0,0,0.25);
         }
+        
+        .info-box {
+            background: rgba(255, 255, 255, 0.18);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+        
+            background-image: linear-gradient(135deg,
+                rgba(255,255,255,0.40) 0%,
+                rgba(220,220,220,0.30) 35%,
+                rgba(180,180,180,0.25) 70%,
+                rgba(140,140,140,0.20) 100%
+            );
+        
+            padding: 15px;
+            border-radius: 12px;
+            border: 6px double rgba(255,255,255,0.85);
+            outline: 3px solid rgba(255,255,255,0.6);
+            box-shadow: 0 0 25px rgba(0,0,0,0.2);
+        }
+
 
         img {
             border-radius: 50%;
@@ -89,19 +109,17 @@
             padding: 2px;
         }
 
-        /* MAIN 2-COLUMN LAYOUT */
+
         .layout {
             display: flex;
             justify-content: center;
             gap: 40px;
         }
 
-        /* Left side = Portfolio */
         .left-side {
             width: 55%;
         }
 
-        /* Right side = Weather + Map vertical stack */
         .right-side {
             width: 35%;
             display: flex;
@@ -109,25 +127,7 @@
             gap: 25px;
         }
 
-        /* Weather / Map container styling */
-        .info-box {
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-        
-            background-image: linear-gradient(135deg,
-                rgba(255,255,255,0.25) 0%,
-                rgba(230,230,230,0.20) 35%,
-                rgba(200,200,200,0.18) 70%,
-                rgba(150,150,150,0.15) 100%
-            );
-        
-            padding: 15px;
-            border-radius: 12px;
-            border: 6px double rgba(255,255,255,0.85);
-            outline: 3px solid rgba(255,255,255,0.6);
-            box-shadow: 0 0 25px rgba(0,0,0,0.2);
-        }
+
                 iframe {
             width: 100%;
             height: 250px;
@@ -141,7 +141,6 @@
 
 <div class="layout">
 
-    <!-- LEFT SIDE: PORTFOLIO -->
     <div class="left-side">
         <div class="container">
 
@@ -190,15 +189,13 @@
         </div>
     </div>
 
-    <!-- RIGHT SIDE: WEATHER + MAP -->
+
     <div class="right-side">
 
-        <!-- Weather Box -->
         <div id="weather-box" class="info-box">
             Loading weather...
         </div>
 
-        <!-- Map Box -->
         <div class="info-box">
             <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=80.23817270994188%2C12.985612038014763%2C80.2416005730629%2C12.987522583675846&amp;layer=mapnik&amp;marker=12.986567312681851%2C80.23988664150238"></iframe>
 
@@ -213,7 +210,6 @@
     </div>
 </div>
 
-<!-- WEATHER SCRIPT -->
 <script>
     const apiKey = "dcb75af0a29d4b15bb8192803250212";
     const city = "Chennai";
@@ -267,6 +263,7 @@
 
 </body>
 </html>
+
 
 
 
