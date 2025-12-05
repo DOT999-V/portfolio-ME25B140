@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Portfolio</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+
+            background: url("D:/py/vscode/web ops/pngtree-black-and-white-abstract-background-image_756101.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        .container {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            border: 6px double #4a4a4a;
+            outline: 3px solid white;
+            box-shadow: 0 0 0 6px #bfbfbf, 0 0 15px rgba(0,0,0,0.25);
+        }
+
+        img {
+            border-radius: 50%;
+            display: block;
+            margin: auto;
+            border: 3px solid #d0d0d0;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 28px;
+            color: #333;
+        }
+
+        h3 {
+            text-align: center;
+            font-weight: normal;
+            margin-top: 5px;
+            color: #555;
+        }
+
+        h2 {
+            border-left: 4px solid #007bff;
+            padding-left: 10px;
+            color: #333;
+            margin-top: 35px;
+        }
+
+        p {
+            line-height: 1.6;
+            color: #444;
+        }
+
+        hr {
+            margin: 30px 0;
+            border: none;
+            border-bottom: 2px dotted #bbb;
+        }
+
+        ul {
+            line-height: 1.8;
+            padding-left: 20px;
+            background: #f8f9fa;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 10px;
+            box-shadow: inset 0 0 4px rgba(0,0,0,0.05);
+        }
+
+        ul li {
+            margin-bottom: 6px;
+            padding: 2px;
+        }
+
+        /* MAIN 2-COLUMN LAYOUT */
+        .layout {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+        }
+
+        /* Left side = Portfolio */
+        .left-side {
+            width: 55%;
+        }
+
+        /* Right side = Weather + Map vertical stack */
+        .right-side {
+            width: 35%;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        /* Weather / Map container styling */
+        .info-box {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 12px;
+            border: 6px double #4a4a4a;
+            outline: 3px solid white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.15);
+        }
+
+        iframe {
+            width: 100%;
+            height: 250px;
+            border: 1px solid black;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="layout">
+
+    <!-- LEFT SIDE: PORTFOLIO -->
+    <div class="left-side">
+        <div class="container">
+
+            <img src="D:/py/vscode/web ops/a2117e75dc55c149c2c68cbadee1f16e.jpg" width="120" height="120">
+            <h1>Vishal Rajamanickam</h1>
+            <h3>ME25B140</h3>
+
+            <hr>
+
+            <h2>About Me</h2>
+            <p>
+                This is Vishal (ME25B140). I’ve developed a strong passion for technology, particularly in the field 
+                of web operations and programming. My interest in trading introduced me to the world of blockchain 
+                and cryptocurrencies, which further deepened my fascination with emerging digital infrastructure 
+                and ideas. I believe that being part of a community with like-minded peers and people with real 
+                experience would help me expand my knowledge as well as contribute meaningfully.
+            </p>
+
+            <hr>
+
+            <h2>Stuff I Like To Do</h2>
+            <ul>
+                <li>Anime</li>
+                <li>Badminton</li>
+                <li>Cricket</li>
+                <li>Explore irrelevant stuff from internet</li>
+                <li>Learn more about expanding technologies</li>
+            </ul>
+
+            <hr>
+
+            <h2>Aspirations</h2>
+            <ul>
+                <li>Become skilled in WebOps</li>
+                <li>Learn blockchain deeply & practically</li>
+                <li>Explore innovative tech projects</li>
+                <li>Grow through club activities & teamwork</li>
+            </ul>
+
+            <hr>
+
+            <h2>Contact</h2>
+            <p>Email: me25b140@smail.iitm.ac.in</p>
+            <p>Phone: 9344552316</p>
+
+        </div>
+    </div>
+
+    <!-- RIGHT SIDE: WEATHER + MAP -->
+    <div class="right-side">
+
+        <!-- Weather Box -->
+        <div id="weather-box" class="info-box">
+            Loading weather...
+        </div>
+
+        <!-- Map Box -->
+        <div class="info-box">
+            <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=80.23817270994188%2C12.985612038014763%2C80.2416005730629%2C12.987522583675846&amp;layer=mapnik&amp;marker=12.986567312681851%2C80.23988664150238"></iframe>
+
+            <br/>
+            <small>
+                <a href="https://www.openstreetmap.org/?mlat=12.986567&amp;mlon=80.239887#map=19/12.986567/80.239887">
+                    View Larger Map
+                </a>
+            </small>
+        </div>
+
+    </div>
+</div>
+
+<!-- WEATHER SCRIPT -->
+<script>
+    const apiKey = "dcb75af0a29d4b15bb8192803250212";
+    const city = "Chennai";
+
+    const url = `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}`;
+
+    fetch(url)
+    .then(response => response.json())
+    .then(data => {
+        const name = data.location.name;
+        const temp = data.current.temp_c;
+        const desc = data.current.condition.text;
+
+        document.getElementById("weather-box").innerHTML = `
+            <h3 style="text-align:center; margin-top:0; margin-bottom:15px;">
+                Weather in ${name}
+            </h3>
+
+            <div style="
+                display:grid; 
+                grid-template-columns: 140px auto; 
+                row-gap: 8px;
+                font-size: 16px;
+            ">
+
+                <div><strong>City:</strong></div>
+                <div>${name}, ${data.location.region}, ${data.location.country}</div>
+
+                <div><strong>Temperature:</strong></div>
+                <div>${temp}°C</div>
+
+                <div><strong>Condition:</strong></div>
+                <div>${desc}</div>
+
+                <div><strong>Humidity:</strong></div>
+                <div>${data.current.humidity}%</div>
+
+                <div><strong>Wind Speed:</strong></div>
+                <div>${data.current.wind_kph} km/h</div>
+
+                <div><strong>Feels Like:</strong></div>
+                <div>${data.current.feelslike_c}°C</div>
+
+            </div>
+        `;
+    })
+    .catch(() => {
+        document.getElementById("weather-box").innerHTML = "Unable to load weather.";
+    });
+</script>
+
+</body>
+</html>
+
+
